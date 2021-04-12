@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Criptomonedas</string>
+
+    <string name="criptocurrency_name">Nombre</string>
+    <string name="criptocurrency_code">Código</string>
+    <string name="criptocurrency_value">Valor</string>
 </resources>

@@ -3,7 +3,12 @@ package com.prueba.criptomonedas
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.prueba.criptomonedas.ui.main.MainFragment
+import dagger.hilt.android.AndroidEntryPoint
 
+/**
+ * Actividad principal de la aplicación
+ */
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
