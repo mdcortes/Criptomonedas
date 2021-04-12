@@ -22,14 +22,14 @@ class CoinMarketCapDataSource @Inject constructor(@ApplicationContext val contex
 
     override fun getCriptocurrencyInfo(responseCallbacks: CriptocurrencyInfoResponseCallbacks) {
         coinMarketCapService.getLatestListingCriptocurrencies(
-            context.getString(R.string.coinmarketcap_api_key), 10, "price"
-        ).enqueue(object : Callback<List<CriptocurrencyInfo>> {
+            context.getString(R.string.coinmarketcap_api_key), "CLP", 10, "price"
+        ).enqueue(object : Callback<CoinMarketCapResponse> {
             override fun onResponse(
-                call: Call<List<CriptocurrencyInfo>>,
-                response: Response<List<CriptocurrencyInfo>>
+                call: Call<CoinMarketCapResponse>,
+                response: Response<CoinMarketCapResponse>
             ) {
                 if (response.isSuccessful){
-                    response.body()?.let { responseCallbacks.onSuccess(it) }
+                    response.body()?.let { responseCallbacks.onSuccess(it.data) }
                 }
 
                 else {
@@ -37,7 +37,7 @@ class CoinMarketCapDataSource @Inject constructor(@ApplicationContext val contex
                 }
             }
 
-            override fun onFailure(call: Call<List<CriptocurrencyInfo>>, t: Throwable) {
+            override fun onFailure(call: Call<CoinMarketCapResponse>, t: Throwable) {
                 t.message?.let { responseCallbacks.onError(it) }
             }
 

@@ -13,7 +13,7 @@ import kotlin.properties.Delegates
  * Desrializador personalizado para API de CoinMarketCap.
  * Selecciona de la salida de la API solamente los elementos que se van a utilizar en la app
  */
-class CoinMarketCapDeserializer : JsonDeserializer<List<CriptocurrencyInfo>> {
+class CoinMarketCapDeserializer : JsonDeserializer<CoinMarketCapResponse> {
     /**
      * Deserializa una lista de CriptocurrencyInfo
      */
@@ -21,8 +21,8 @@ class CoinMarketCapDeserializer : JsonDeserializer<List<CriptocurrencyInfo>> {
         json: JsonElement?,
         typeOfT: Type?,
         context: JsonDeserializationContext?
-    ): List<CriptocurrencyInfo> {
-        var list = mutableListOf<CriptocurrencyInfo>()
+    ): CoinMarketCapResponse {
+        val list = mutableListOf<CriptocurrencyInfo>()
         val jsonObject = json!!.asJsonObject
 
         for (elementJson in jsonObject.entrySet()) {
@@ -32,7 +32,7 @@ class CoinMarketCapDeserializer : JsonDeserializer<List<CriptocurrencyInfo>> {
             }
         }
 
-        return list
+        return CoinMarketCapResponse(list)
     }
 
     /**
