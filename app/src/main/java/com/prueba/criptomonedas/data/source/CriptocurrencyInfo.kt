@@ -1,5 +1,7 @@
 package com.prueba.criptomonedas.data.source
 
+import java.math.BigDecimal
+
 /**
  * Clase que representa la información de una criptomoneda
  */
@@ -15,5 +17,5 @@ data class CriptocurrencyInfo(
     /**
      * Valor de la criptomoneda
      */
-    val value: Double
+    val value: BigDecimal
 )
