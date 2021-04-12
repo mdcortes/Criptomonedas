@@ -1,14 +1,25 @@
 package com.prueba.criptomonedas.data.source.coinmarketcap
 
+import com.prueba.criptomonedas.data.source.CriptocurrencyInfo
 import retrofit2.Call
-import retrofit2.http.GET
-import retrofit2.http.Header
-import retrofit2.http.Headers
-import retrofit2.http.Path
+import retrofit2.http.*
 
+/**
+ * Interfaz que define la comunicación con la API de CoinMarketCap
+ */
 interface CoinMarketCapService {
 
+    /**
+     * Obtiene la última información disponible sobre criptomonedas
+     * @param apiKey API key para realizar la llamada
+     * @param limit Cantidad de elementos que se requerirán como máximo
+     * @param sort Parámetro por el que se ordenarán los resultados de la llamada
+     */
     @Headers("Accept: application/json")
-    @GET("cryptocurrency/listings/latest?limit={quantity}&sort=price")
-    fun getLatestListingCriptocurrencies(@Header("X-CMC_PRO_API_KEY") api_key: String, @Path("quantity") quantity: Int): Call<Object>
+    @GET("cryptocurrency/listings/latest")
+    fun getLatestListingCriptocurrencies(
+        @Header("X-CMC_PRO_API_KEY") apiKey: String,
+        @Query("limit") limit: Int,
+        @Query("sort") sort: String
+    ): Call<List<CriptocurrencyInfo>>
 }
