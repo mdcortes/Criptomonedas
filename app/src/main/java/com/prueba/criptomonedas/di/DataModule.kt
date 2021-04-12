@@ -49,4 +49,13 @@ abstract class DataModule {
     abstract fun bindsCriptocurrencyInfoDataSource(
         coinMarketCapDataSource: CoinMarketCapDataSource
     ): CriptocurrencyInfoDataSource
+
+    /**
+     * Provee de un repositorio de CriptocurrencyInfo
+     */
+    @Singleton
+    @Binds
+    abstract fun bindsCriptocurrencyInfoRepository(
+        defaultCriptocurrencyInfoRepository: DefaultCriptocurrencyInfoRepository
+    ): CriptocurrencyInfoRepository
 }
