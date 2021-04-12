@@ -3,6 +3,8 @@ package com.prueba.criptomonedas.di
 import com.google.gson.GsonBuilder
 import com.prueba.criptomonedas.data.source.CriptocurrencyInfo
 import com.prueba.criptomonedas.data.source.CriptocurrencyInfoDataSource
+import com.prueba.criptomonedas.data.source.CriptocurrencyInfoRepository
+import com.prueba.criptomonedas.data.source.DefaultCriptocurrencyInfoRepository
 import com.prueba.criptomonedas.data.source.coinmarketcap.CoinMarketCapDataSource
 import com.prueba.criptomonedas.data.source.coinmarketcap.CoinMarketCapDeserializer
 import com.prueba.criptomonedas.data.source.coinmarketcap.CoinMarketCapService
@@ -16,11 +18,12 @@ import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Singleton
 
 /**
- * Módulo que administra la inyección de dependencias en las clases relacionadas con las operaciones de red
+ * Módulo que administra la inyección de dependencias en las clases relacionadas con
+ * las operaciones de red
  */
 @Module
 @InstallIn(ApplicationComponent::class)
-abstract class NetworkModule {
+abstract class DataModule {
 
     /**
      * Provee de una instancia de la interfaz CoinMarketCapService por medio de Retrofit
