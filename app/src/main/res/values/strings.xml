@@ -1,7 +1,8 @@
 <resources>
-    <string name="app_name">Criptomonedas</string>
+    <string name="app_name">Las 10 criptomonedas con mayor valor actual</string>
 
-    <string name="criptocurrency_name">Nombre</string>
-    <string name="criptocurrency_code">Código</string>
-    <string name="criptocurrency_value">Valor</string>
+    <string name="criptocurrency_name">Nombre:</string>
+    <string name="criptocurrency_code">Código:</string>
+    <string name="criptocurrency_value">Valor:</string>
+    <string name="criptocurrency_value_format">$%1.2f</string>
 </resources>
