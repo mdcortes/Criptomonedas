@@ -31,6 +31,12 @@ class MainViewModel @Inject constructor(private val criptocurrencyInfoRepository
 
             _criptocurrencyInfoList.value = it
         })
+
+        criptocurrencyInfoRepository.observeErrorMessages().observeForever (Observer {
+            it?: return@Observer
+
+            _snackbarMessage.value = it
+        })
     }
 
     /**

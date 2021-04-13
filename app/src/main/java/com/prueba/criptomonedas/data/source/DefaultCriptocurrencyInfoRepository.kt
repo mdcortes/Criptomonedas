@@ -18,7 +18,6 @@ class DefaultCriptocurrencyInfoRepository @Inject constructor(var dataSource: Cr
      * Objeto LiveData usado para mostrar mensajes de error
      */
     private val _errorMessage = MutableLiveData<String>()
-    val errorMessage: LiveData<String> get() = _errorMessage
 
     override fun observeCriptocurrencyInfo(): LiveData<List<CriptocurrencyInfo>> {
         return _criptocurrencyInfo
@@ -34,5 +33,9 @@ class DefaultCriptocurrencyInfoRepository @Inject constructor(var dataSource: Cr
                 _errorMessage.value = message
             }
         })
+    }
+
+    override fun observeErrorMessages(): LiveData<String> {
+        return _errorMessage
     }
 }

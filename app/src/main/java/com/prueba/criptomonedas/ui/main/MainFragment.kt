@@ -7,6 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.material.snackbar.Snackbar
+import com.prueba.criptomonedas.R
 import com.prueba.criptomonedas.databinding.MainFragmentBinding
 import com.prueba.criptomonedas.ui.main.adapters.CriptocurrencyInfoAdapter
 import dagger.hilt.android.AndroidEntryPoint
@@ -51,12 +53,25 @@ class MainFragment : Fragment() {
             adapter = CriptocurrencyInfoAdapter()
         }
 
+        mainFragmentBinding.refreshButton.setOnClickListener {
+            viewModel.refreshInfoList()
+        }
+
         viewModel.criptocurrencyInfoList.observe(viewLifecycleOwner,
         Observer {
             it?: return@Observer
 
             (mainFragmentBinding.criptocurrencyInfoRecyclerView.adapter
                     as CriptocurrencyInfoAdapter).update(it)
+
+            Snackbar.make(mainFragmentBinding.root, R.string.criptocurrencies_updated, Snackbar.LENGTH_LONG).show()
+        })
+
+        viewModel.snackbarMessage.observe(viewLifecycleOwner,
+        Observer {
+            it?: return@Observer
+
+            Snackbar.make(mainFragmentBinding.root, it, Snackbar.LENGTH_LONG).show()
         })
 
         viewModel.refreshInfoList()

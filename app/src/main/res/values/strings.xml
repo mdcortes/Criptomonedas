@@ -5,4 +5,8 @@
     <string name="criptocurrency_code">Código:</string>
     <string name="criptocurrency_value">Valor:</string>
     <string name="criptocurrency_value_format">$%1.2f</string>
+
+    <string name="refresh_button">Actualizar lista de criptomonedas</string>
+
+    <string name="criptocurrencies_updated">Criptomonedas actualizadas</string>
 </resources>

@@ -13,6 +13,11 @@ interface CriptocurrencyInfoRepository {
     fun observeCriptocurrencyInfo(): LiveData<List<CriptocurrencyInfo>>
 
     /**
+     * Permite observar mesajes de error en el repositorio
+     */
+    fun observeErrorMessages(): LiveData<String>
+
+    /**
      * Permite refrescar la información de criptomonedas disponible
      */
     fun refreshCriptocurrencyInfo()
